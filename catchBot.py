@@ -1,7 +1,7 @@
 import pyautogui as pag 
-import time, math, random, sys, pytesseract
+import time, math, random, sys #, pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = '/usr/share/tesseract-ocr/4.00/tessdata'
+#pytesseract.pytesseract.tesseract_cmd = '/usr/share/tesseract-ocr/4.00/tessdata'
 
 def move(direction):
     pag.keyDown(direction)
@@ -11,10 +11,10 @@ def move(direction):
 def checkPkmn(pokemon):
     pokemon = pag.screenshot(region = (300, 535, 125, 50))
     pokemon.save('pokemonName.png')
-    print(pytesseract.image_to_string('pokemonName.png'))
+#    print(pytesseract.image_to_string('pokemonName.png'))
 
-    if pytesseract.image_to_string('pokemonName.png') == pokemon:
-        pag.click(347, 626)
+#    if pytesseract.image_to_string('pokemonName.png') == pokemon:
+#        pag.click(347, 626)
 
 def battleToDefeat():
     screen = pag.size()
@@ -44,7 +44,7 @@ while True:
     #print(pag.position())
     #battleToDefeat()
     #
-    for i in range(0, 3):
+    for i in range(0, 9999999):
         time.sleep(2)
         move('left')
         if random.randint(0, 2) == 0:
@@ -54,5 +54,6 @@ while True:
         move('right')
         if random.randint(0, 2) == 0:
             battleToDefeat()
+        print('Iteration: ', i)
     #    checkPkmn()
     break
